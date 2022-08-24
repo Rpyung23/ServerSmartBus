@@ -9,7 +9,7 @@ server.on('connection', (socket)=>
     socket.on('data', (data)=>
     {
         console.log(data)
-        if(data[0] == 'F1')
+        if(data[0],toString().toUpperCase() == 'f1')
         {
             console.log('LONGITUD TRAMA : '+data[1])
             console.log('SERIE : '+data[2])

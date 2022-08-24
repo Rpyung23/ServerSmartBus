@@ -1,4 +1,5 @@
 let decimaltoHexa = require('./utils/parserHexa')
+let parserFechas = require('./utils/fechas')
 const net = require('net');
 const {parse} = require("nodemon/lib/cli");
 
@@ -38,7 +39,7 @@ server.on('connection', (socket)=>
             console.log('VELOCIDAD : '+parseInt(data[5].toString(16),16))
             console.log('ORIENTACION : '+parseInt(data[6].toString(16),16))
             console.log('SATELITES : '+parseInt(data[7].toString(16),16))
-            console.log('FECHA : '+parseInt(fecha,16))
+            console.log('FECHA : '+parserFechas(parseInt(fecha,16)))
             console.log('LAT : '+parseInt(lat,16))/100000
             console.log('LNG : '+parseInt(lng,16))/100000
             console.log('BANDERA : '+(parseInt(decimaltoHexa(data[20].toString(16)), 16).toString(2)).padStart(8, '0'))

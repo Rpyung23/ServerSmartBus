@@ -9,8 +9,8 @@ server.on('connection', (socket)=>
     socket.on('data', (data)=>
     {
         console.log(data)
-        console.log(data[0].toString().toUpperCase())
-        if(data[0].toString().toUpperCase() == 'F1')
+        console.log(data[0].toString('hex').toUpperCase())
+        if(data[0].toString('hex').toUpperCase() == 'F1')
         {
             console.log('LONGITUD TRAMA : '+data[1])
             console.log('SERIE : '+data[2])

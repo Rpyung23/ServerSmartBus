@@ -17,9 +17,9 @@ server.on('connection', (socket)=>
         if(data[0].toString(16) == 'f1')
         {
             console.log(data)
-            fecha = (data[8].toString(16)+data[9].toString(16)+data[10].toString(16)+data[11].toString(16)).reverse().join("")
-            lat = (data[12].toString(16)+data[13].toString(16)+data[14].toString(16)+data[15].toString(16)).reverse().join("")
-            lng = (data[16].toString(16)+data[17].toString(16)+data[18].toString(16)+data[19].toString(16)).reverse().join("")
+            fecha = data[11].toString(16)+data[10].toString(16)+data[9].toString(16)+data[11].toString(8)
+            lat = data[15].toString(16)+data[14].toString(16)+data[13].toString(16)+data[12].toString(16)
+            lng = data[19].toString(16)+data[18].toString(16)+data[17].toString(16)+data[16].toString(16)
             console.log("**********************************************************************")
             console.log('FECHA : '+fecha)
             console.log('LAT : '+lat)

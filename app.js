@@ -20,7 +20,7 @@ server.on('connection', (socket)=>
             console.log(data)
 
             fecha = decimaltoHexa(data[11].toString(16))+decimaltoHexa(data[10].toString(16))
-                +decimaltoHexa(data[9].toString(16))+decimaltoHexa(data[8].toString(8))
+                +decimaltoHexa(data[9].toString(16))+decimaltoHexa(data[8].toString(16))
 
             lat = decimaltoHexa(data[15].toString(16))+decimaltoHexa(data[14].toString(16))
                 +decimaltoHexa(data[13].toString(16))+decimaltoHexa((data[12].toString(16)))

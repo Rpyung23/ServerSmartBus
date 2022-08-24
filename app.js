@@ -9,9 +9,12 @@ server.on('connection', (socket)=>
     socket.on('data', (data)=>
     {
         console.log(data)
-        let buff = Buffer.from(data, "binary");
 
-        console.log('El cliente ' + socket.remoteAddress + ":" + socket.remotePort + " dice: " + buff.toString())
+        console.log('El cliente ' + socket.remoteAddress + ":" + socket.remotePort + " dice: " + data)
+        console.log('binary' + data.toString('binary'))
+        console.log('ascii' + data.toString('ascii'))
+        console.log('utf-8' + data.toString('utf-8'))
+        console.log('base64' + data.toString('base64'))
         //socket.write('Recibido!')
     })
 

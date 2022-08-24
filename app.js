@@ -11,10 +11,10 @@ server.on('connection', (socket)=>
         console.log(data)
 
         console.log('El cliente ' + socket.remoteAddress + ":" + socket.remotePort + " dice: " + data)
-        console.log('binary' + data.toString('binary'))
-        console.log('ascii' + data.toString('ascii'))
-        console.log('utf-8' + data.toString('utf-8'))
-        console.log('base64' + data.toString('base64'))
+        console.log('binary : ' + data.toString('binary'))
+        console.log('ascii : ' + data.toString('ascii'))
+        console.log('utf-8 : ' + data.toString('utf-8'))
+        console.log('base64 : ' + data.toString('base64'))
         //socket.write('Recibido!')
     })
 

@@ -9,7 +9,7 @@ server.on('connection', (socket)=>
     socket.on('data', (data)=>
     {
         console.log(data)
-        let buff = Buffer.from(data, "utf-8");
+        let buff = Buffer.from(data, "ascii");
 
         console.log('El cliente ' + socket.remoteAddress + ":" + socket.remotePort + " dice: " + buff.toString())
         //socket.write('Recibido!')

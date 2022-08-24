@@ -17,9 +17,9 @@ server.on('connection', (socket)=>
         if(data[0].toString(16) == 'f1')
         {
             console.log(data)
-            fecha = data[8].toString(16)+data[9].toString(16)+data[10].toString(16)+data[11].toString(16)
-            lat = data[12].toString(16)+data[13].toString(16)+data[14].toString(16)+data[15].toString(16)
-            lng = data[16].toString(16)+data[17].toString(16)+data[18].toString(16)+data[19].toString(16)
+            fecha = data[8].toString(16)+data[9].toString(16)+data[10].toString(16)+data[11].toString(16).reverse().join("")
+            lat = data[12].toString(16)+data[13].toString(16)+data[14].toString(16)+data[15].toString(16).reverse().join("")
+            lng = data[16].toString(16)+data[17].toString(16)+data[18].toString(16)+data[19].toString(16).reverse().join("")
             console.log("**********************************************************************")
             console.log('FECHA : '+fecha)
             console.log('LAT : '+lat)
@@ -31,8 +31,8 @@ server.on('connection', (socket)=>
             console.log('ORIENTACION : '+parseInt(data[6].toString(16),16))
             console.log('SATELITES : '+parseInt(data[7].toString(16),16))
             console.log('FECHA : '+parseInt(fecha,16))
-            console.log('LAT : '+parseInt(lat,16))
-            console.log('LNG : '+parseInt(lng,16))
+            console.log('LAT : '+parseInt(lat,16))/100000
+            console.log('LNG : '+parseInt(lng,16))/100000
             console.log('BANDERA : '+(parseInt(data[20].toString(16), 16).toString(2)).padStart(8, '0'))
         }
 

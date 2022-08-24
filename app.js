@@ -8,11 +8,10 @@ server.on('connection', (socket)=>
     console.log('CLINETE CONECTADO ')
     socket.on('data', (data)=>
     {
-        var datos = ''
+        console.log(data)
+        let buff = Buffer.from(data, "utf-8");
 
-        //datos = binary_decode(data)
-
-        console.log('El cliente ' + socket.remoteAddress + ":" + socket.remotePort + " dice: " + data.toString())
+        console.log('El cliente ' + socket.remoteAddress + ":" + socket.remotePort + " dice: " + buff.toString())
         //socket.write('Recibido!')
     })
 

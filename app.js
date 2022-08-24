@@ -8,7 +8,8 @@ server.on('connection', (socket)=>
     console.log('CLINETE CONECTADO ')
     socket.on('data', (data)=>
     {
-        if(data[0] == 'F1')
+        console.log(data)
+        if(data[0].toUpperCase() == 'F1')
         {
             console.log('LONGITUD TRAMA : '+data[1])
             console.log('SERIE : '+data[2])

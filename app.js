@@ -30,9 +30,9 @@ server.on('connection', (socket)=>
             console.log('VELOCIDAD : '+parseInt(data[5].toString(16),16))
             console.log('ORIENTACION : '+parseInt(data[6].toString(16),16))
             console.log('SATELITES : '+parseInt(data[7].toString(16),16))
-            console.log('FECHA : '+parseInt(fecha).toString(16))
-            console.log('LAT : '+parseInt(lat).toString(16))
-            console.log('LNG : '+parseInt(lng).toString(16))
+            console.log('FECHA : '+parseInt(fecha,16))
+            console.log('LAT : '+parseInt(lat,16))
+            console.log('LNG : '+parseInt(lng,16))
             console.log('BANDERA : '+(parseInt(data[20].toString(16), 16).toString(2)).padStart(8, '0'))
         }
 

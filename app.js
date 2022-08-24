@@ -8,16 +8,21 @@ server.on('connection', (socket)=>
     console.log('CLINETE CONECTADO ')
     socket.on('data', (data)=>
     {
-        console.log(data)
+        if(data[0] == 'F1')
+        {
+            console.log('LONGITUD TRAMA : '+data[1])
+            console.log('SERIE : '+data[2])
+            console.log('VELOCIDAD : '+parseInt(data[3],16))
+            console.log('ORIENTACION : '+parseInt(data[4],16))
+            console.log('SATELITES : '+parseInt(data[5],16))
+            console.log('FECHA : '+parseInt(data[6],16))
+            console.log('LAT : '+parseInt(data[7],16))
+            console.log('LNG : '+parseInt(data[8],16))
+            console.log('BANDERA : '+(parseInt(data[9], 16).toString(2)).padStart(8, '0'))
+        }
 
-        console.log('El cliente ' + socket.remoteAddress + ":" + socket.remotePort + " dice: " + data)
-        console.log('binary : ' + data.toString('binary'))
-        console.log('ascii : ' + data.toString('ascii'))
-        console.log('utf-8 : ' + data.toString('utf-8'))
-        console.log('base64 : ' + data.toString('base64'))
-        console.log('utf16le : ' + data.toString('utf16le'))
-        console.log('ucs2  : ' + data.toString('ucs2'))
-        console.log('hex : ' + data.toString('hex'))
+        //console.log('El cliente ' + socket.remoteAddress + ":" + socket.remotePort + " dice: " + data)
+
         //socket.write('Recibido!')
     })
 

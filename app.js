@@ -12,10 +12,11 @@ server.on('connection', (socket)=>
         var fecha = ""
         var lat = ""
         var lng = ""
-        console.log(data)
-        console.log(data[0])
+        //console.log(data)
+        //console.log(data[0])
         if(data[0].toString(16) == 'f1')
         {
+            console.log(data)
             fecha = data[8].toString(16)+data[9].toString(16)+data[10].toString(16)+data[11].toString(16)
             lat = data[12].toString(16)+data[13].toString(16)+data[14].toString(16)+data[15].toString(16)
             lng = data[16].toString(16)+data[17].toString(16)+data[18].toString(16)+data[19].toString(16)

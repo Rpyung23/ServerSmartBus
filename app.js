@@ -9,6 +9,7 @@ server.on('connection', (socket)=>
     socket.on('data', (data)=>
     {
         console.log(data)
+        console.log(data[0])
         if(data[0] == 'f1')
         {
             console.log('LONGITUD TRAMA : '+data[1])

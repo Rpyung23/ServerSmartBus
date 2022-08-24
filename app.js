@@ -15,6 +15,9 @@ server.on('connection', (socket)=>
         console.log('ascii : ' + data.toString('ascii'))
         console.log('utf-8 : ' + data.toString('utf-8'))
         console.log('base64 : ' + data.toString('base64'))
+        console.log('utf16le : ' + data.toString('utf16le'))
+        console.log('ucs2  : ' + data.toString('ucs2'))
+        console.log('hex : ' + data.toString('hex'))
         //socket.write('Recibido!')
     })
 

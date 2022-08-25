@@ -38,7 +38,7 @@ server.on('connection', (socket)=>
             console.log('ORIENTACION : '+parseInt(data[6].toString(16),16) * 2)
             console.log('SATELITES : '+parseInt(data[7].toString(16),16))
             console.log('FECHA : '+parserFechas(parseInt(fecha,16)))
-            console.log('LAT : '+GeoDecimalesLongitud(HexToSignedInt(lat)))
+            console.log('LAT : '+GeoDecimalesLatitud(HexToSignedInt(lat)))
             console.log('LNG : '+GeoDecimalesLongitud(HexToSignedInt(lng)))
             console.log('LAT HEX: '+(lat))
             console.log('LNG HEX: '+(lng))

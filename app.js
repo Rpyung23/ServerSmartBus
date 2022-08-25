@@ -29,11 +29,6 @@ server.on('connection', (socket)=>
             lng = decimaltoHexa(data[16].toString(16))+decimaltoHexa(data[17].toString(16))
                 +decimaltoHexa(data[18].toString(16))+decimaltoHexa(data[19].toString(16))
 
-            console.log("**********************************************************************")
-            console.log('FECHA : '+fecha)
-            console.log('LAT : '+lat)
-            console.log('LNG : '+lng)
-            console.log("**********************************************************************")
             console.log('LONGITUD TRAMA : '+data[1].toString(16))
             console.log('SERIE : '+data[2].toString(16)+data[3].toString(16)+data[4].toString(16))
             console.log('VELOCIDAD : '+parseInt(data[5].toString(16),16))

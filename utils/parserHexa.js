@@ -6,7 +6,7 @@ function decimaltoHexa(dato)
 
 function HexToSignedInt(hex)
 {
-   var dato =  Buffer.from('20E184FF ', 'hex').readInt32LE()
+   var dato =  Buffer.from(hex, 'hex').readInt32LE()
    return dato
 }
 module.exports = {decimaltoHexa,HexToSignedInt}

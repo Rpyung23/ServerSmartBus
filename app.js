@@ -1,9 +1,12 @@
 let {decimaltoHexa,HexToSignedInt} = require('./utils/parserHexa')
+let {GeoDecimalesLatitud,GeoDecimalesLongitud} = require('./utils/geoDecimal')
 let parserFechas = require('./utils/fechas')
 const net = require('net');
 const {parse} = require("nodemon/lib/cli");
-
 const server = net.createServer()
+
+
+//console.log(GeoDecimalesLongitud('-07900.4663'))
 
 server.on('connection', (socket)=>
 {
@@ -35,8 +38,8 @@ server.on('connection', (socket)=>
             console.log('ORIENTACION : '+parseInt(data[6].toString(16),16) * 2)
             console.log('SATELITES : '+parseInt(data[7].toString(16),16))
             console.log('FECHA : '+parserFechas(parseInt(fecha,16)))
-            console.log('LAT : '+HexToSignedInt(lat))
-            console.log('LNG : '+HexToSignedInt(lng))
+            console.log('LAT : '+GeoDecimalesLatitud(HexToSignedInt(lat)))
+            console.log('LNG : '+GeoDecimalesLongitud(HexToSignedInt(lng)))
             console.log('BANDERA : '+(parseInt(decimaltoHexa(data[20].toString(16)), 16).toString(2)).padStart(8, '0'))
         }
 

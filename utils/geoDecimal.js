@@ -1,6 +1,13 @@
 function GeoDecimalesLatitud(punto)
 {
     var stringPunto = punto.toString()
+
+    if(stringPunto[1] != '0')
+    {
+        var aux = stringPunto[1]
+        stringPunto[1] = "0"+aux
+    }
+
     var mListPuntoFinal = stringPunto.split('.')
     var stringPuntoFinal = mListPuntoFinal[1]
     var d = -1
@@ -26,6 +33,11 @@ function GeoDecimalesLatitud(punto)
 function GeoDecimalesLongitud(punto)
 {
     var stringPunto = punto.toString()
+    if(stringPunto[1] != '0')
+    {
+        var aux = stringPunto[1]
+        stringPunto[1] = "0"+aux
+    }
     var mListPuntoFinal = stringPunto.split('.')
     var stringPuntoFinal = mListPuntoFinal[1]
     var d = -1

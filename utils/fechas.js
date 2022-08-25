@@ -1,19 +1,16 @@
 function parserFechas(epoch)
 {
+    var new_fecha = new Date(epoch * 1000)
 
-    var hora5 = (3600 * 5)
-    var fecha = (epoch * 1000) - hora5
-    var new_fecha = new Date(fecha)
+    var dia = new_fecha.getUTCDate();
 
-    var dia = new_fecha.getDate();
-
-    var mes = new_fecha.getMonth();
+    var mes = new_fecha.getUTCMonth();
 
     mes += 1
 
-    var min = new_fecha.getMinutes()
-    var hour = new_fecha.getHours()
-    var seg = new_fecha.getSeconds()
+    var min = new_fecha.getUTCMinutes()
+    var hour = new_fecha.getUTCHours()
+    var seg = new_fecha.getUTCSeconds()
 
     if(dia<10)
     {

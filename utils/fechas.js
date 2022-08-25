@@ -1,7 +1,9 @@
 function parserFechas(epoch)
 {
-    console.log("FEPOCH : "+epoch)
-    var new_fecha = new Date(epoch*1000)
+
+    var hora5 = (3600 * 5)
+    var fecha = (epoch * 1000) - hora5
+    var new_fecha = new Date(fecha)
 
     var dia = new_fecha.getDate();
 

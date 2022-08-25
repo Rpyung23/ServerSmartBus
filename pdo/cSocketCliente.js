@@ -25,6 +25,7 @@ class CSocketCliente
     {
         if(this.oF0F1F2 != null)
         {
+            console.log("TRAMA ORIGINAL : "+this.getF0F1F2.getTramaCompletaHexadecimal)
             console.log("TIPO : "+this.getF0F1F2.getTipoTrama)
             console.log("TAMANIO : "+this.getF0F1F2.getTamanioTrama)
             console.log("SERIE : "+this.getF0F1F2.getSerieEquipo)
@@ -35,6 +36,7 @@ class CSocketCliente
             console.log("LATITUD : "+this.getF0F1F2.getLatitud)
             console.log("LONGITUD : "+this.getF0F1F2.getLongitud)
             console.log("BANDERAS : "+this.getF0F1F2.getBandera)
+            console.log("************************************************************")
         }
     }
 

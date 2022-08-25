@@ -8,13 +8,13 @@ function GeoDecimalesLatitud(punto)
 
     var mm = stringPunto[3]+stringPunto[4]
     var mmmm = "."+stringPuntoFinal
-    console.log(mm+mmmm)
+    //console.log(mm+mmmm)
 
 
     var parte1 = parseFloat(mm+mmmm)/60
-    console.log("PARSE FLOAT : "+parte1)
+    //console.log("PARSE FLOAT : "+parte1)
     var parte2 = parseFloat(dd) + parte1
-    console.log("PARTE 2 : "+parte2)
+    //console.log("PARTE 2 : "+parte2)
     var parte3 = parseFloat(d) * parte2
 
     //(𝑑) ∗ [𝑑𝑑 + (𝑚𝑚. 𝑚𝑚𝑚𝑚/60)]
@@ -33,13 +33,13 @@ function GeoDecimalesLongitud(punto)
 
     var mm = stringPunto[4]+stringPunto[5]
     var mmmm = "."+stringPuntoFinal
-    console.log(mm+mmmm)
+    //console.log(mm+mmmm)
 
 
     var parte1 = parseFloat(mm+mmmm)/60
-    console.log("PARSE FLOAT : "+parte1)
+    //console.log("PARSE FLOAT : "+parte1)
     var parte2 = parseFloat(dd) + parte1
-    console.log("PARTE 2 : "+parte2)
+    //console.log("PARTE 2 : "+parte2)
     var parte3 = parseFloat(d) * parte2
 
 

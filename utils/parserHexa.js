@@ -6,20 +6,7 @@ function decimaltoHexa(dato)
 
 function HexToSignedInt(hex)
 {
-    var data = hex.match(/../g);
-
-// Create a buffer
-    var buf = new ArrayBuffer(4);
-// Create a data view of it
-    var view = new DataView(buf);
-
-// set bytes
-    data.forEach(function (b, i) {
-        view.setUint8(i, parseInt(b, 16));
-    });
-
-// get an int32 with little endian
-    var num = view.getInt32(0, 1);
-    return num
+   var datos = Buffer.from(hex, 'hex').readInt32LE();
+   return (datos/1000000);
 }
 module.exports = {decimaltoHexa,HexToSignedInt}

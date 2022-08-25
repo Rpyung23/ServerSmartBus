@@ -40,8 +40,8 @@ server.on('connection', (socket)=>
             console.log('FECHA : '+parserFechas(parseInt(fecha,16)))
             console.log('LAT : '+GeoDecimalesLatitud(HexToSignedInt(lat)))
             console.log('LNG : '+GeoDecimalesLongitud(HexToSignedInt(lng)))
-            console.log('LAT HEX: '+(lat))
-            console.log('LNG HEX: '+(lng))
+            console.log('LAT HEX: '+HexToSignedInt(lat))
+            console.log('LNG HEX: '+HexToSignedInt(lng))
             console.log('BANDERA : '+(parseInt(decimaltoHexa(data[20].toString(16)), 16).toString(2)).padStart(8, '0'))
         }
 

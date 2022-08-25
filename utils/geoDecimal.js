@@ -20,7 +20,7 @@ function GeoDecimalesLatitud(punto)
     var parte3 = parseFloat(d) * parte2
 
     //(𝑑) ∗ [𝑑𝑑 + (𝑚𝑚. 𝑚𝑚𝑚𝑚/60)]
-    return Number(parte3).toFixed(7)
+    return parte3.toFixed(6)
 
 }
 
@@ -47,7 +47,7 @@ function GeoDecimalesLongitud(punto)
     var parte3 = parseFloat(d) * parte2
 
 
-    return Number(parte3).toFixed(7)
+    return parte3.toFixed(7)
 }
 
 module.exports = {GeoDecimalesLatitud,GeoDecimalesLongitud}

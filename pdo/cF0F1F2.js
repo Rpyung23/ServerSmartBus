@@ -22,7 +22,7 @@ class CF0F1F2 extends cCabezeraTrama
     {
         var data = this.getTramaCompletaHexadecimal
 
-        this.setFecha(decimaltoHexa(data[11].toString(16))+decimaltoHexa(data[10].toString(16))
+        var fecha = (decimaltoHexa(data[11].toString(16))+decimaltoHexa(data[10].toString(16))
             +decimaltoHexa(data[9].toString(16))+decimaltoHexa(data[8].toString(16)))
         var lat = (decimaltoHexa(data[12].toString(16))+decimaltoHexa(data[13].toString(16))
             +decimaltoHexa(data[14].toString(16))+decimaltoHexa((data[15].toString(16))))

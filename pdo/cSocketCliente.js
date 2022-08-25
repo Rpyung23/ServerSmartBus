@@ -15,6 +15,7 @@ class CSocketCliente
             case 'f1':
             case 'f2':
                 this.oF0F1F2 = new CF0F1F2(trama)
+                this.getF0F1F2.initDivicionTrama()
                 break;
         }
     }

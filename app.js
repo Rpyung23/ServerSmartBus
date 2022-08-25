@@ -1,9 +1,9 @@
+const net = require('net');
+const server = net.createServer()
 let {decimaltoHexa,HexToSignedInt} = require('./utils/parserHexa')
 let {GeoDecimalesLatitud,GeoDecimalesLongitud} = require('./utils/geoDecimal')
 let parserFechas = require('./utils/fechas')
-const net = require('net');
-const {parse} = require("nodemon/lib/cli");
-const server = net.createServer()
+
 
 
 //console.log(HexToSignedInt('-07900.4663'))
@@ -17,7 +17,7 @@ server.on('connection', (socket)=>
         var lat = ""
         var lng = ""
 
-        //console.log(data[0])
+        console.log(data)
         if(data[0].toString(16) == 'f1')
         {
 
@@ -44,16 +44,9 @@ server.on('connection', (socket)=>
             //console.log('LNG HEX: '+HexToSignedInt(lng))
             console.log('BANDERA : '+(parseInt(decimaltoHexa(data[20].toString(16)), 16).toString(2)).padStart(8, '0'))
         }
-
-        //console.log('El cliente ' + socket.remoteAddress + ":" + socket.remotePort + " dice: " + data)
-
-        //socket.write('Recibido!')
     })
 
-    socket.on('cmdTimeOfLive',(data)=>
-    {
-        console.log("cmdTimeOfLive : "+data)
-    })
+
 
     socket.on('close', ()=>{
         console.log('Comunicación finalizada')
@@ -68,3 +61,4 @@ server.listen(7890, ()=>
 {
     console.log('servidor esta escuchando en la puerta', server.address().port)
 })
+

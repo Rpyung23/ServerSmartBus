@@ -26,11 +26,11 @@ server.on('connection', (socket)=>
             fecha = decimaltoHexa(data[11].toString(16))+decimaltoHexa(data[10].toString(16))
                 +decimaltoHexa(data[9].toString(16))+decimaltoHexa(data[8].toString(16))
 
-            lat = decimaltoHexa(data[15].toString(16))+decimaltoHexa(data[14].toString(16))
-                +decimaltoHexa(data[13].toString(16))+decimaltoHexa((data[12].toString(16)))
+            lat = decimaltoHexa(data[12].toString(16))+decimaltoHexa(data[13].toString(16))
+                +decimaltoHexa(data[14].toString(16))+decimaltoHexa((data[15].toString(16)))
 
-            lng = decimaltoHexa(data[19].toString(16))+decimaltoHexa(data[18].toString(16))
-                +decimaltoHexa(data[17].toString(16))+decimaltoHexa(data[16].toString(16))
+            lng = decimaltoHexa(data[16].toString(16))+decimaltoHexa(data[17].toString(16))
+                +decimaltoHexa(data[18].toString(16))+decimaltoHexa(data[19].toString(16))
 
             console.log('LONGITUD TRAMA : '+data[1].toString(16))
             console.log('SERIE : '+data[2].toString(16)+data[3].toString(16)+data[4].toString(16))

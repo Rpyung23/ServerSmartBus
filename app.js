@@ -38,8 +38,8 @@ server.on('connection', (socket)=>
             console.log('ORIENTACION : '+parseInt(data[6].toString(16),16) * 2)
             console.log('SATELITES : '+parseInt(data[7].toString(16),16))
             console.log('FECHA : '+parserFechas(parseInt(fecha,16)))
-            console.log('LAT : '+HexToSignedInt(lat))
-            console.log('LNG : '+HexToSignedInt(lng))
+            console.log('LAT : '+(lat))
+            console.log('LNG : '+(lng))
             console.log('BANDERA : '+(parseInt(decimaltoHexa(data[20].toString(16)), 16).toString(2)).padStart(8, '0'))
         }
 

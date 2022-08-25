@@ -20,7 +20,7 @@ class CF0F1F2 extends cCabezeraTrama
     /**DIVIDE LA TRAMA HEXADECIMAL A SUS RESPECTIVOS VALORES**/
     initDivicionTrama()
     {
-        var data = this.getTramaCompletaHexadecimal()
+        var data = this.getTramaCompletaHexadecimal
 
         this.setFecha(decimaltoHexa(data[11].toString(16))+decimaltoHexa(data[10].toString(16))
             +decimaltoHexa(data[9].toString(16))+decimaltoHexa(data[8].toString(16)))
@@ -28,16 +28,16 @@ class CF0F1F2 extends cCabezeraTrama
             +decimaltoHexa(data[14].toString(16))+decimaltoHexa((data[15].toString(16))))
         var lng = (decimaltoHexa(data[16].toString(16))+decimaltoHexa(data[17].toString(16))
             +decimaltoHexa(data[18].toString(16))+decimaltoHexa(data[19].toString(16)))
-        this.setTamanioTrama(parseInt(data[1].toString(16),16))
-        this.setSerieEquipo(data[2].toString(16)+data[3].toString(16)+data[4].toString(16))
-        this.setVelocidad(parseInt(data[5].toString(16),16))
-        this.setOrientacion(parseInt(data[6].toString(16),16) * 2)
-        this.setSatelites(parseInt(data[7].toString(16),16))
-        this.setFecha(parserFechas(parseInt(fecha,16)))
-        this.setLatitud(GeoDecimalesLatitud(HexToSignedInt(lat)))
-        this.setLongitud(GeoDecimalesLongitud(HexToSignedInt(lng)))
+        this.setTamanioTrama  = parseInt(data[1].toString(16),16)
+        this.setSerieEquipo = data[2].toString(16)+data[3].toString(16)+data[4].toString(16)
+        this.setVelocidad = (parseInt(data[5].toString(16),16))
+        this.setOrientacion = (parseInt(data[6].toString(16),16) * 2)
+        this.setSatelites = (parseInt(data[7].toString(16),16))
+        this.setFecha = (parserFechas(parseInt(fecha,16)))
+        this.setLatitud = (GeoDecimalesLatitud(HexToSignedInt(lat)))
+        this.setLongitud = (GeoDecimalesLongitud(HexToSignedInt(lng)))
         var binario = parseInt(decimaltoHexa(data[20].toString(16)), 16).toString(2).padStart(8, '0')
-        this.setBandera(binario)
+        this.setBandera = (binario)
     }
 
 

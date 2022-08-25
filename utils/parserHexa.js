@@ -7,6 +7,6 @@ function decimaltoHexa(dato)
 function HexToSignedInt(hex)
 {
   var dato = parseInt(hex,16)
-  return dato
+  return (dato/1000)
 }
 module.exports = {decimaltoHexa,HexToSignedInt}

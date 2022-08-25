@@ -13,7 +13,6 @@ server.on('connection', (socket)=>
     socket.on('data', (data)=>
     {
         oS.insertarTrama(data)
-        console.log("TRAMA ORIGINAL : "+data)
         oS.imprimirTramaDecodificada()
     })
 

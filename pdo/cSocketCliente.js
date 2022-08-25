@@ -25,7 +25,7 @@ class CSocketCliente
     {
         if(this.oF0F1F2 != null)
         {
-
+            console.log(this.getF0F1F2.getTramaCompletaHexadecimal)
             console.log("TIPO : "+this.getF0F1F2.getTipoTrama)
             console.log("TAMANIO : "+this.getF0F1F2.getTamanioTrama)
             console.log("SERIE : "+this.getF0F1F2.getSerieEquipo)

@@ -50,6 +50,11 @@ server.on('connection', (socket)=>
         //socket.write('Recibido!')
     })
 
+    socket.on('cmdTimeOfLive',(data)=>
+    {
+        console.log("cmdTimeOfLive : "+data)
+    })
+
     socket.on('close', ()=>{
         console.log('Comunicación finalizada')
     })

@@ -5,15 +5,16 @@ let mListaSocketClientes = []
 
 server.on('connection', (socket)=>
 {
-    console.log('CLINETE CONECTADO')
+    console.log('CLIENTE CONECTADO')
 
     var oS = new cSocketCliente(socket,null)
     mListaSocketClientes.push(oS)
 
     socket.on('data', (data)=>
     {
-        oS.insertarTrama(data)
-        oS.imprimirTramaDecodificada()
+        console.log(data)
+        /*oS.insertarTrama(data)
+        oS.imprimirTramaDecodificada()*/
     })
 
 

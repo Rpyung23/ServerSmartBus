@@ -10,6 +10,7 @@
   "author": "VIGITRACKLATAM CIA.LTDA",
   "license": "MIT",
   "dependencies": {
+    "mysql2": "^2.3.3",
     "nodemon": "^2.0.19"
   }
 }

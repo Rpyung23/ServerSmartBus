@@ -1,0 +1,7 @@
+class ModelMonitoreo
+{
+    registerMonitoreo(obj)
+    {
+
+    }
+}

@@ -25,7 +25,7 @@ server.on('connection', (socket)=>
 
     socket.on('data', (data)=>
     {
-        //console.log(data)
+        console.log(data)
         socket.write(binary_encode(msmPrueba),'binary',(error)=>{
             console.log(error)
         })

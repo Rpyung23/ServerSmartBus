@@ -2,7 +2,8 @@ const cSocketCliente = require("./pdo/cSocketCliente")
 const net = require('net');
 const server = net.createServer()
 let mListaSocketClientes = []
-
+let datoNull = null
+let msmPrueba = 10
 server.on('connection', (socket)=>
 {
     console.log('CLIENTE CONECTADO')
@@ -13,6 +14,12 @@ server.on('connection', (socket)=>
     socket.on('data', (data)=>
     {
         console.log(data)
+        socket.write('Hola',(error)=>{
+            console.log(error)
+        })
+        /*socket.write(msmPrueba,Uint8Array,(error)=>{
+            console.log(error)
+        })*/
         /*oS.insertarTrama(data)
         oS.imprimirTramaDecodificada()*/
     })

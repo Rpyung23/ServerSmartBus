@@ -14,7 +14,7 @@ server.on('connection', (socket)=>
     socket.on('data', (data)=>
     {
         console.log(data)
-        socket.write('Hola',(error)=>{
+        socket.write('Hola Mundo',(error)=>{
             console.log(error)
         })
         /*socket.write(msmPrueba,Uint8Array,(error)=>{

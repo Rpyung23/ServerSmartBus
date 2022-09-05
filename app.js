@@ -16,10 +16,8 @@ server.on('connection', (socket)=>
     {
         console.log(data)
         var buffer = Buffer.alloc(3,'ABC');
-        console.log(buffer,(error)=>
-        {
-            console.log("ERROR")
-            console.log(error)
+        socket.write(buffer,(err)=>{
+            console.log(err)
         })
 
         /*oS.insertarTrama(data)

@@ -2,8 +2,20 @@ const cSocketCliente = require("./pdo/cSocketCliente")
 const net = require('net');
 const server = net.createServer()
 let mListaSocketClientes = []
-let datoNull = null
-let msmPrueba = 10
+let msmPrueba = '10,'+null
+
+
+function binary_encode( s ){
+    s = unescape( encodeURIComponent( s ) );
+    var chr, i = 0, l = s.length, out = '';
+    for( ; i < l; i ++ ){
+        chr = s.charCodeAt( i ).toString( 2 );
+        while( chr.length % 8 != 0 ){ chr = '0' + chr; }
+        out += chr;
+    }
+    return out;
+}
+
 server.on('connection', (socket)=>
 {
     console.log('CLIENTE CONECTADO')
@@ -13,8 +25,8 @@ server.on('connection', (socket)=>
 
     socket.on('data', (data)=>
     {
-        console.log(data)
-        socket.write('Hola Mundo',(error)=>{
+        //console.log(data)
+        socket.write(binary_encode(msmPrueba),'binary',(error)=>{
             console.log(error)
         })
         /*socket.write(msmPrueba,Uint8Array,(error)=>{

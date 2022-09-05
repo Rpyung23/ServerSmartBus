@@ -17,6 +17,7 @@ server.on('connection', (socket)=>
         console.log(data)
         var buffer = Buffer.alloc(3,'ABC');
         buffer[1] = '0'
+        console.log(buffer)
         socket.write(buffer,(err)=>{
             console.log(err)
         })

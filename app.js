@@ -15,14 +15,14 @@ server.on('connection', (socket)=>
     socket.on('data', (data)=>
     {
         console.log(data)
-        var buffer = Buffer.alloc(3,'A0C');
+        /*var buffer = Buffer.alloc(31,'gps,-11.102030,-78.255626,12345');
         console.log(buffer)
         socket.write(buffer,(err)=>{
             console.log(err)
-        })
+        })*/
 
-        /*oS.insertarTrama(data)
-        oS.imprimirTramaDecodificada()*/
+        oS.insertarTrama(data)
+        oS.imprimirTramaDecodificada()
     })
 
 

@@ -63,6 +63,7 @@ server.on('connection', (socket)=>
 
 app.post("/sendComando",function (req,res)
 {
+    console.log("COMANDO RECIVO : "+req.body.comando)
     try {
         if(mListaSocketClientes.length > 0){
             mListaSocketClientes[0].write(req.body.comando)

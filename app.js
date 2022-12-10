@@ -1,10 +1,27 @@
 const { Buffer } = require('node:buffer')
 const cSocketCliente = require("./pdo/cSocketCliente")
+const express = require("express")
+const cors = require('cors');
+/**CONFIGURACION DE CORS**/
+var cors_config = {
+    "origin": "*",
+    "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+    "preflightContinue": false,
+    "optionsSuccessStatus": 204
+}
+const app = express()
+
+
 const net = require('net');
 const server = net.createServer()
 let mListaSocketClientes = []
 
 let banderaSendEnvio = true;
+
+
+app.use(cors(cors_config));
+app.use(express.json({limit: '80mb'}));
+app.use(express.urlencoded({ extended: false,limit:'80mb' }));
 
 server.on('connection', (socket)=>
 {
@@ -25,12 +42,12 @@ server.on('connection', (socket)=>
         oS.insertarTrama(data)
         oS.imprimirTramaDecodificada()
 
-        if(banderaSendEnvio){
+        /*if(banderaSendEnvio){
             console.log("WRITING..............")
             socket.write(".msj..10.probando/equipo*");
             console.log("WRITE COMPLETE")
             banderaSendEnvio = false
-        }
+        }*/
 
 
     })
@@ -44,8 +61,33 @@ server.on('connection', (socket)=>
     })
 })
 
+app.post("/sendComando",function (req,res)
+{
+    try {
+        if(mListaSocketClientes.length > 0){
+            mListaSocketClientes[0].write(req.body.comando)
+            res.status(200).json({
+                msm:"comando enviado"
+            })
+        }else{
+            res.status(200).json({
+                msm:"SOCKETS VACIOS"
+            })
+        }
+    }catch (e) {
+
+        res.status(200).json({
+            msm: e.toString()
+        })
+    }
+})
+
 server.listen(7890, ()=>
 {
     console.log('servidor esta escuchando en la puerta', server.address().port)
 })
 
+app.listen(3001,()=>{
+    console.log("REST ONLINE.....")
+    console.log('Escuchando por el puerto : '+3001)
+})

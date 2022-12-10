@@ -23,9 +23,11 @@ server.on('connection', (socket)=>
 
         oS.insertarTrama(data)
         oS.imprimirTramaDecodificada()
+
+        console.log("WRITING..............")
+        socket.write(".msj..10.probando/equipo*");
+        console.log("WRITE COMPLETE")
     })
-
-
 
     socket.on('close', ()=>{
         console.log('Comunicación finalizada')

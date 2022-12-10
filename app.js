@@ -28,7 +28,7 @@ server.on('connection', (socket)=>
     console.log('CLIENTE CONECTADO')
 
     var oS = new cSocketCliente(socket,null)
-    mListaSocketClientes.push(oS)
+    mListaSocketClientes.push(socket)
 
     socket.on('data', (data)=>
     {

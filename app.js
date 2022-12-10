@@ -4,6 +4,7 @@ const net = require('net');
 const server = net.createServer()
 let mListaSocketClientes = []
 
+let banderaSendEnvio = true;
 
 server.on('connection', (socket)=>
 {
@@ -24,9 +25,14 @@ server.on('connection', (socket)=>
         oS.insertarTrama(data)
         oS.imprimirTramaDecodificada()
 
-        console.log("WRITING..............")
-        socket.write(".msj..10.probando/equipo*");
-        console.log("WRITE COMPLETE")
+        if(banderaSendEnvio){
+            console.log("WRITING..............")
+            socket.write(".msj..10.probando/equipo*");
+            console.log("WRITE COMPLETE")
+            banderaSendEnvio = false
+        }
+
+
     })
 
     socket.on('close', ()=>{

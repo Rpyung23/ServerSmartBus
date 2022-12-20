@@ -1,6 +1,6 @@
 const mysql = require("mysql2");
 
-let connDB = (code_company) =>
+let connDB = () =>
 {
 
 

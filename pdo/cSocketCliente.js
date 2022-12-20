@@ -17,7 +17,7 @@ class CSocketCliente
             case 'f2':
                 this.oF0F1F2 = new CF0F1F2(trama)
                 this.getF0F1F2.initDivicionTrama()
-                ControllerVehiculo.registroControllerVehiculo(this.getF0F1F2().getSerieEquipo())
+                ControllerVehiculo.registroControllerVehiculo(this.getF0F1F2.getSerieEquipo())
                 break;
         }
     }

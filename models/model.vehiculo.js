@@ -1,4 +1,4 @@
-const connDB = require("../conector/conn");
+const connDB = require("../config/conn");
 class ModelVehiculo
 {
     static async registroVehiculo(serie)

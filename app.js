@@ -68,7 +68,7 @@ app.post("/sendComando",function (req,res)
         if(mListaSocketClientes.length > 0){
             console.log("CLIENTID : "+mListaSocketClientes[mListaSocketClientes.length].clientId)
             console.log("ADDRESS : "+mListaSocketClientes[mListaSocketClientes.length].address)
-            mListaSocketClientes[0].write(req.body.comando)
+            mListaSocketClientes[mListaSocketClientes.length].write(req.body.comando)
             res.status(200).json({
                 msm:"comando enviado"
             })

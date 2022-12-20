@@ -71,9 +71,8 @@ app.post("/sendComando",function (req,res)
         {
             console.log("TAMANIO LISTA SOCKETS : "+mListaSocketClientes.length)
             try{
-
-                console.log("CLIENTID : "+mListaSocketClientes[mListaSocketClientes.length-1].clientId)
-                console.log("ADDRESS : "+mListaSocketClientes[mListaSocketClientes.length-1].address)
+                console.log("REMOTEADDRESS : "+mListaSocketClientes[mListaSocketClientes.length-1].remoteAddress);
+                console.log(`ADDRESS : ${mListaSocketClientes[mListaSocketClientes.length-1].address()}`)
                 mListaSocketClientes[mListaSocketClientes.length-1].write(req.body.comando)
                 res.status(200).json({
                     msm:"comando enviado"

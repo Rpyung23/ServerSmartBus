@@ -28,7 +28,7 @@ server.on('connection', (socket)=>
     console.log('CLIENTE CONECTADO')
 
     var oS = new cSocketCliente(socket,null)
-    mListaSocketClientes[0] = socket
+    mListaSocketClientes.push(socket)
 
     socket.on('data', (data)=>
     {
@@ -65,14 +65,24 @@ app.post("/sendComando",function (req,res)
 {
     console.log("COMANDO RECIVO : "+req.body.comando)
     try {
-        if(mListaSocketClientes.length > 0){
+        if(mListaSocketClientes.length > 0)
+        {
+            console.log("TAMANIO LISTA SOCKETS : "+mListaSocketClientes.length)
             try{
-                console.log("CLIENTID : "+mListaSocketClientes[0].clientId)
-                console.log("ADDRESS : "+mListaSocketClientes[0].address)
-                mListaSocketClientes[0].write(req.body.comando)
-                res.status(200).json({
-                    msm:"comando enviado"
-                })
+                if (mListaSocketClientes[mListaSocketClientes.length-1].isConnected)
+                {
+                    console.log("CLIENTID : "+mListaSocketClientes[mListaSocketClientes.length-1].clientId)
+                    console.log("ADDRESS : "+mListaSocketClientes[mListaSocketClientes.length-1].address)
+                    mListaSocketClientes[mListaSocketClientes.length-1].write(req.body.comando)
+                    res.status(200).json({
+                        msm:"comando enviado"
+                    })
+                }else{
+                    res.status(200).json({
+                        msm:"comando no enviado CLIENTE NO CONNECTADO"
+                    })
+                }
+
             }catch (e) {
                 console.log("TRY CATCH SOCKET.WRITE")
                 console.log(e)

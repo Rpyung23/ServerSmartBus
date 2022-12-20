@@ -28,7 +28,7 @@ server.on('connection', (socket)=>
     console.log('CLIENTE CONECTADO')
 
     var oS = new cSocketCliente(socket,null)
-    mListaSocketClientes.push(socket)
+    mListaSocketClientes[0] = socket
 
     socket.on('data', (data)=>
     {
@@ -66,12 +66,17 @@ app.post("/sendComando",function (req,res)
     console.log("COMANDO RECIVO : "+req.body.comando)
     try {
         if(mListaSocketClientes.length > 0){
-            console.log("CLIENTID : "+mListaSocketClientes[mListaSocketClientes.length].clientId)
-            console.log("ADDRESS : "+mListaSocketClientes[mListaSocketClientes.length].address)
-            mListaSocketClientes[mListaSocketClientes.length].write(req.body.comando)
-            res.status(200).json({
-                msm:"comando enviado"
-            })
+            try{
+                console.log("CLIENTID : "+mListaSocketClientes[0].clientId)
+                console.log("ADDRESS : "+mListaSocketClientes[0].address)
+                mListaSocketClientes[0].write(req.body.comando)
+                res.status(200).json({
+                    msm:"comando enviado"
+                })
+            }catch (e) {
+                console.log("TRY CATCH SOCKET.WRITE")
+                console.log(e)
+            }
         }else{
             res.status(200).json({
                 msm:"SOCKETS VACIOS"

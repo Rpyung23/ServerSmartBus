@@ -25,7 +25,9 @@ app.use(express.urlencoded({ extended: false,limit:'80mb' }));
 
 server.on('connection', (socket)=>
 {
-    console.log('CLIENTE CONECTADO')
+    console.log('NUEVO CLIENTE CONECTADO')
+
+
 
     var oS = new cSocketCliente(socket,null)
     mListaSocketClientes.push(socket)
@@ -53,7 +55,7 @@ server.on('connection', (socket)=>
     })
 
     socket.on('close', ()=>{
-        console.log('Comunicación finalizada')
+        console.log('EL SOCKET CLIENTE HA FINALIZADO LA COMUNICACION')
     })
 
     socket.on('error', (err)=>{
@@ -69,19 +71,13 @@ app.post("/sendComando",function (req,res)
         {
             console.log("TAMANIO LISTA SOCKETS : "+mListaSocketClientes.length)
             try{
-                if (mListaSocketClientes[mListaSocketClientes.length-1].isConnected)
-                {
-                    console.log("CLIENTID : "+mListaSocketClientes[mListaSocketClientes.length-1].clientId)
-                    console.log("ADDRESS : "+mListaSocketClientes[mListaSocketClientes.length-1].address)
-                    mListaSocketClientes[mListaSocketClientes.length-1].write(req.body.comando)
-                    res.status(200).json({
-                        msm:"comando enviado"
-                    })
-                }else{
-                    res.status(200).json({
-                        msm:"comando no enviado CLIENTE NO CONNECTADO"
-                    })
-                }
+
+                console.log("CLIENTID : "+mListaSocketClientes[mListaSocketClientes.length-1].clientId)
+                console.log("ADDRESS : "+mListaSocketClientes[mListaSocketClientes.length-1].address)
+                mListaSocketClientes[mListaSocketClientes.length-1].write(req.body.comando)
+                res.status(200).json({
+                    msm:"comando enviado"
+                })
 
             }catch (e) {
                 console.log("TRY CATCH SOCKET.WRITE")

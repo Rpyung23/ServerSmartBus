@@ -1,7 +1,7 @@
 function parserFechas(epoch)
 {
     var fecha = epoch * 1000
-    fecha = fecha + 18000000
+    //fecha = fecha + 18000000
     var new_fecha = new Date(fecha)
 
     var dia = new_fecha.getDate();

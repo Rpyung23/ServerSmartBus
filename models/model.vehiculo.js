@@ -8,7 +8,7 @@ class ModelVehiculo
             var sql = "call ProcedureInsertVehiculo('"+serie+"');"
             console.log("SQL INSERT VEHICULO  :"+sql)
             await conn.query(sql)
-            await conn()
+            await conn.end()
 
         }catch (e) {
             console.log(e)

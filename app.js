@@ -41,9 +41,9 @@ server.on('connection', (socketClient)=>
         console.log(data)
         console.log("--------------------------------------------------------------------------")
         //socketClient.end()
-
-        socketClient.insertarTrama(data)
-        //socketClient.imprimirTramaDecodificada()
+        var oS = new cSocketCliente(socketClient,null)
+        oS.insertarTrama(data)
+        //oS.imprimirTramaDecodificada()
 
 
     })

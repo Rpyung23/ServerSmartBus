@@ -2,6 +2,8 @@ const { Buffer } = require('node:buffer')
 const cSocketCliente = require("./pdo/cSocketCliente")
 const express = require("express")
 const cors = require('cors');
+// 1*60*60*1000
+const TIMEOUT_1HORA = (5000)
 /**CONFIGURACION DE CORS**/
 var cors_config = {
     "origin": "*",
@@ -26,6 +28,7 @@ app.use(express.urlencoded({ extended: false,limit:'80mb' }));
 server.on('connection', (socketClient)=>
 {
     console.log('NUEVO CLIENTE CONECTADO '+socketClient.remoteAddress)
+    socketClient.setTimeout(TIMEOUT_1HORA)
 
 
 
@@ -37,7 +40,7 @@ server.on('connection', (socketClient)=>
         console.log("SOCKET : "+socketClient.remoteAddress+" DATA : ")
         console.log(data)
         console.log("--------------------------------------------------------------------------")
-        socketClient.end()
+        //socketClient.end()
 
         //oS.insertarTrama(data)
         //oS.imprimirTramaDecodificada()
@@ -52,6 +55,12 @@ server.on('connection', (socketClient)=>
     socketClient.on('error', (err)=>{
         console.log(err.message)
     })
+
+    socketClient.on('timeout',()=>{
+        console.log("SOCKET TIMEOUT "+socketClient.remoteAddress)
+        socketClient.end()
+    })
+
 })
 
 server.on('listening',()=>{

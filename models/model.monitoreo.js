@@ -1,7 +1,0 @@
-class ModelMonitoreo
-{
-    registerMonitoreo(obj)
-    {
-
-    }
-}

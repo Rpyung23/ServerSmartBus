@@ -5,6 +5,15 @@ class ControllerVehiculo
     {
         await ModelVehiculo.registroVehiculo(serie)
     }
+
+
+    static async registroControllerMonitoreoVehiculo(CodiDispVehi_, ConeMoni_, UltiVeloMoni_, UltiFechMoni_,
+                                                     UltiLatiMoni_, UltiLongMoni_, UltiRumbMoni_, SateContMoni_)
+    {
+        await ModelVehiculo.registroModelMonitoreoVehiculo(CodiDispVehi_, ConeMoni_, UltiVeloMoni_, UltiFechMoni_,
+            UltiLatiMoni_, UltiLongMoni_, UltiRumbMoni_, SateContMoni_)
+    }
+
 }
 
 

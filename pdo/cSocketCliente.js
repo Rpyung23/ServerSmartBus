@@ -18,6 +18,13 @@ class CSocketCliente
                 this.oF0F1F2 = new CF0F1F2(trama)
                 this.getF0F1F2.initDivicionTrama()
                 ControllerVehiculo.registroControllerVehiculo(this.getF0F1F2.getSerieEquipo)
+                if (this.getF0F1F2.getTipoTrama == 'f1')
+                {
+                    ControllerVehiculo.registroControllerMonitoreoVehiculo(this.getF0F1F2.getSerieEquipo,
+                        1,this.getF0F1F2.getVelocidad,
+                        this.getF0F1F2.getFecha,this.getF0F1F2.getLatitud,
+                        this.getF0F1F2.getLongitud,this.getF0F1F2.getOrientacion,this.getF0F1F2.getSatelites)
+                }
                 break;
         }
     }

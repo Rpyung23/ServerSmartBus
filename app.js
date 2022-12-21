@@ -25,7 +25,7 @@ app.use(express.urlencoded({ extended: false,limit:'80mb' }));
 
 server.on('connection', (socket)=>
 {
-    console.log('NUEVO CLIENTE CONECTADO')
+    console.log('NUEVO CLIENTE CONECTADO '+socket.remoteAddress)
 
 
 
@@ -34,15 +34,15 @@ server.on('connection', (socket)=>
 
     socket.on('data', (data)=>
     {
-        console.log(data)
+        //console.log(data)
         /*var buffer = Buffer.alloc(31,'gps,-11.102030,-78.255626,12345');
         console.log(buffer)
         socket.write(buffer,(err)=>{
             console.log(err)
         })*/
 
-        oS.insertarTrama(data)
-        oS.imprimirTramaDecodificada()
+        //oS.insertarTrama(data)
+        //oS.imprimirTramaDecodificada()
 
         /*if(banderaSendEnvio){
             console.log("WRITING..............")

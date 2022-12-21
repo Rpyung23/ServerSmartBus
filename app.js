@@ -23,21 +23,21 @@ app.use(cors(cors_config));
 app.use(express.json({limit: '80mb'}));
 app.use(express.urlencoded({ extended: false,limit:'80mb' }));
 
-server.on('connection', (socket)=>
+server.on('connection', (socketClient)=>
 {
-    console.log('NUEVO CLIENTE CONECTADO '+socket.remoteAddress)
+    console.log('NUEVO CLIENTE CONECTADO '+socketClient.remoteAddress)
 
 
 
     //var oS = new cSocketCliente(socket,null)
-    mListaSocketClientes.push(socket)
+    /*mListaSocketClientes.push(socket)*/
 
-    socket.on('data', (data)=>
+    socketClient.on('data', (data)=>
     {
-        console.log("SOCKET : "+socket.remoteAddress+" DATA : ")
+        console.log("SOCKET : "+socketClient.remoteAddress+" DATA : ")
         console.log(data)
         console.log("--------------------------------------------------------------------------")
-
+        socketClient.end()
 
         //oS.insertarTrama(data)
         //oS.imprimirTramaDecodificada()
@@ -45,13 +45,26 @@ server.on('connection', (socket)=>
 
     })
 
-    socket.on('close', ()=>{
+    socketClient.on('close', ()=>{
         console.log('EL SOCKET CLIENTE HA FINALIZADO LA COMUNICACION')
     })
 
-    socket.on('error', (err)=>{
+    socketClient.on('error', (err)=>{
         console.log(err.message)
     })
+})
+
+server.on('listening',()=>{
+    console.log("SOCKET SERVER LISTENING....")
+})
+
+
+server.on('error',(error)=>{
+    console.log("**********************************************************************")
+    console.log("SOCKET SERVER ERROR : ....")
+    console.log(error)
+    console.log(error.message)
+    console.log("**********************************************************************")
 })
 
 app.post("/sendComando",function (req,res)
@@ -88,7 +101,7 @@ app.post("/sendComando",function (req,res)
 
 server.listen(7890, ()=>
 {
-    console.log('servidor esta escuchando en la puerta', server.address().port)
+    console.log('SOCKET SERVER LISTEN', server.address().port)
 })
 
 app.listen(3001,()=>{

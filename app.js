@@ -29,12 +29,12 @@ server.on('connection', (socket)=>
 
 
 
-    var oS = new cSocketCliente(socket,null)
+    //var oS = new cSocketCliente(socket,null)
     mListaSocketClientes.push(socket)
 
     socket.on('data', (data)=>
     {
-        console.log(data)
+        console.log("SOCKET : "+socket.remoteAddress+" DATA : "+data)
 
 
         //oS.insertarTrama(data)

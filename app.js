@@ -34,7 +34,9 @@ server.on('connection', (socket)=>
 
     socket.on('data', (data)=>
     {
-        console.log("SOCKET : "+socket.remoteAddress+" DATA : "+data)
+        console.log("SOCKET : "+socket.remoteAddress+" DATA : ")
+        console.log(data)
+        console.log("--------------------------------------------------------------------------")
 
 
         //oS.insertarTrama(data)

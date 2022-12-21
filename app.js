@@ -3,7 +3,7 @@ const cSocketCliente = require("./pdo/cSocketCliente")
 const express = require("express")
 const cors = require('cors');
 // 1*60*60*1000
-const TIMEOUT_1HORA = (5000)
+const TIMEOUT_1HORA = (1*60*60*1000)
 /**CONFIGURACION DE CORS**/
 var cors_config = {
     "origin": "*",
@@ -49,7 +49,7 @@ server.on('connection', (socketClient)=>
     })
 
     socketClient.on('close', ()=>{
-        console.log('EL SOCKET CLIENTE HA FINALIZADO LA COMUNICACION')
+        console.log('EL SOCKET CLIENTE HA FINALIZADO LA COMUNICACION '+socketClient.remoteAddress)
     })
 
     socketClient.on('error', (err)=>{

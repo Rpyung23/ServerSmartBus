@@ -14,6 +14,14 @@ class ControllerVehiculo
             UltiLatiMoni_, UltiLongMoni_, UltiRumbMoni_, SateContMoni_)
     }
 
+
+    static async registroControllerHistorialMonitoreoVehiculo(CodiDispVehi_, ConeMoni_, UltiVeloMoni_, UltiFechMoni_,
+                                                     UltiLatiMoni_, UltiLongMoni_, UltiRumbMoni_, SateContMoni_)
+    {
+        await ModelVehiculo.registroModelHistorialMonitoreoVehiculo(CodiDispVehi_, ConeMoni_, UltiVeloMoni_, UltiFechMoni_,
+            UltiLatiMoni_, UltiLongMoni_, UltiRumbMoni_, SateContMoni_)
+    }
+
 }
 
 

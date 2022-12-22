@@ -24,6 +24,16 @@ class CSocketCliente
                         1,this.getF0F1F2.getVelocidad,
                         this.getF0F1F2.getFecha,this.getF0F1F2.getLatitud,
                         this.getF0F1F2.getLongitud,this.getF0F1F2.getOrientacion,this.getF0F1F2.getSatelites)
+
+                    try{
+                        ControllerVehiculo.registroControllerHistorialMonitoreoVehiculo(this.getF0F1F2.getSerieEquipo,
+                            1,this.getF0F1F2.getVelocidad,
+                            this.getF0F1F2.getFecha,this.getF0F1F2.getLatitud,
+                            this.getF0F1F2.getLongitud,this.getF0F1F2.getOrientacion,this.getF0F1F2.getSatelites)
+                    }catch (e) {
+                        console.log("HISTORIAL CALL CONTROLLER")
+                        console.log(e)
+                    }
                 }
                 break;
         }

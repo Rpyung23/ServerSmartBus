@@ -1,4 +1,5 @@
 let CF0F1F2 = require('../pdo/cF0F1F2')
+let ControllerTramaSocket = require("../controller/controller.tramaSocket")
 let ControllerVehiculo = require('../controller/controller.vehiculo')
 class CSocketCliente
 {
@@ -11,6 +12,17 @@ class CSocketCliente
 
     insertarTrama(trama)
     {
+        /**  INSERTANDO TRAMA SOCKET  **/
+
+        try{
+            var serie = data[2].toString(16)+data[3].toString(16)+data[4].toString(16);
+            ControllerTramaSocket.registerControllerTramaSocket(serie,trama)
+        }catch (e) {
+            console.log("ERROR AL INSERTAR LA TRAMA SOCKET")
+            console.log(e)
+        }
+
+        /**  FIN TRAMA SOCKET  **/
         switch (trama[0].toString(16)){
             case 'f0':
             case 'f1':

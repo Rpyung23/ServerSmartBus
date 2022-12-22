@@ -16,7 +16,7 @@ class CSocketCliente
 
         try{
             var serie = trama[2].toString(16)+trama[3].toString(16)+trama[4].toString(16);
-            ControllerTramaSocket.registerControllerTramaSocket(serie,trama)
+            ControllerTramaSocket.registerControllerTramaSocket(serie,trama.toString('utf8'))
         }catch (e) {
             console.log("ERROR AL INSERTAR LA TRAMA SOCKET")
             console.log(e)

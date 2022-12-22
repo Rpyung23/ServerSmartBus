@@ -19,7 +19,8 @@ class CSocketCliente
             var tramaString = ""
             for (var i = 0;i<trama.length;i++)
             {
-                tramaString=tramaString+trama[i].toString(16)
+                var aux = trama[i].toString(16)
+                tramaString=tramaString+" "+(aux.length<1 ? "0"+aux : aux)
             }
             ControllerTramaSocket.registerControllerTramaSocket(serie,tramaString)
         }catch (e) {

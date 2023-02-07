@@ -6,15 +6,7 @@ function decimaltoHexa(dato)
 
 function HexToSignedInt(hex)
 {
-   /*var dato =  Buffer.from(hex, 'hex').readInt32LE()
-   return ("-0"+Math.abs(dato/10000))*/
-    /*let decimal = parseInt(hex, 16);
-    if (decimal > 2147483647) {
-        decimal -= 4294967296;
-    }
-    return decimal.toString();*/
-
-    var dato = parseInt(hex, 16) | 0;
-    return dato.toString()
+   var dato =  Buffer.from(hex, 'hex').readInt32LE()
+   return ("-0"+Math.abs(dato/10000))
 }
 module.exports = {decimaltoHexa,HexToSignedInt}

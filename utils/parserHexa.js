@@ -14,6 +14,7 @@ function HexToSignedInt(hex)
     }
     return decimal.toString();*/
 
-    return parseInt(hex, 16) | 0;
+    var dato = parseInt(hex, 16) | 0;
+    return dato.toString()
 }
 module.exports = {decimaltoHexa,HexToSignedInt}

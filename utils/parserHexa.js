@@ -12,6 +12,6 @@ function HexToSignedInt(hex)
     if (decimal > 2147483647) {
         decimal -= 4294967296;
     }
-    return decimal;
+    return decimal.toString();
 }
 module.exports = {decimaltoHexa,HexToSignedInt}

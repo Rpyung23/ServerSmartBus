@@ -8,10 +8,12 @@ function HexToSignedInt(hex)
 {
    /*var dato =  Buffer.from(hex, 'hex').readInt32LE()
    return ("-0"+Math.abs(dato/10000))*/
-    let decimal = parseInt(hex, 16);
+    /*let decimal = parseInt(hex, 16);
     if (decimal > 2147483647) {
         decimal -= 4294967296;
     }
-    return decimal.toString();
+    return decimal.toString();*/
+
+    return parseInt(hex, 16) | 0;
 }
 module.exports = {decimaltoHexa,HexToSignedInt}

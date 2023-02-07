@@ -1,7 +1,7 @@
 let cCabezeraTrama = require('../pdo/cCabezeraTrama')
 const {decimaltoHexa, HexToSignedInt} = require("../utils/parserHexa");
 const parserFechas = require("../utils/fechas");
-const {GeoDecimalesLatitud, GeoDecimalesLongitud} = require("../utils/geoDecimal");
+const convertNMEAtoDECIMAL = require("../utils/geoDecimal");
 class CF0F1F2 extends cCabezeraTrama
 {
     constructor(trama)
@@ -36,8 +36,8 @@ class CF0F1F2 extends cCabezeraTrama
         this.setOrientacion = (parseInt(data[6].toString(16),16) * 2)
         this.setSatelites = (parseInt(data[7].toString(16),16))
         this.setFecha = (parserFechas(parseInt(fecha,16)))
-        this.setLatitud = (GeoDecimalesLatitud(HexToSignedInt(lat)))
-        this.setLongitud = (GeoDecimalesLongitud(HexToSignedInt(lng)))
+        this.setLatitud = (convertNMEAtoDECIMAL(HexToSignedInt(lat)))
+        this.setLongitud = (convertNMEAtoDECIMAL(HexToSignedInt(lng)))
         var binario = parseInt(decimaltoHexa(data[20].toString(16)), 16).toString(2).padStart(8, '0')
         this.setBandera = (binario)
     }

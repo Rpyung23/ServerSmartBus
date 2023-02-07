@@ -30,6 +30,10 @@ class CF0F1F2 extends cCabezeraTrama
             +decimaltoHexa(data[14].toString(16))+decimaltoHexa((data[15].toString(16))))
         var lng = (decimaltoHexa(data[16].toString(16))+decimaltoHexa(data[17].toString(16))
             +decimaltoHexa(data[18].toString(16))+decimaltoHexa(data[19].toString(16)))
+
+        console.log("LATITUD : "+lat)
+        console.log("LONGITUD : "+lng)
+
         this.setTamanioTrama  = decimaltoHexa(data[1].toString(16))
         this.setSerieEquipo = data[2].toString(16)+data[3].toString(16)+data[4].toString(16)
         this.setVelocidad = (parseInt(data[5].toString(16),16))

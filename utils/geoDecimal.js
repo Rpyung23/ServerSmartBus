@@ -35,6 +35,8 @@
 
 function convertNMEAtoDECIMAL(strValor)
 {
+    console.log(strValor)
+    console.log("-----------------------------------")
     let ValorRetorno = 0;
     let Coordenada = strValor.trim();
     let ValorNumerico = parseFloat(Coordenada);

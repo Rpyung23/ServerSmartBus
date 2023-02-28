@@ -1,6 +1,7 @@
 const cSocketCliente = require("./pdo/cSocketCliente")
 const express = require("express")
 const cors = require('cors');
+const cron = require('node-cron');
 
 // 1*60*60*1000
 //const TIMEOUT_1HORA = (1*60*60*1000)
@@ -120,3 +121,9 @@ app.listen(3001,()=>{
     console.log("REST ONLINE.....")
     console.log('Escuchando por el puerto : '+3001)
 })
+
+
+
+cron.schedule('* * * * *', () => {
+    console.log('running a CRON...');
+});

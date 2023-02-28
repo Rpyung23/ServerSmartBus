@@ -1,7 +1,7 @@
 let cCabezeraTrama = require('../pdo/cCabezeraTrama')
 const {decimaltoHexa, HexToSignedInt} = require("../utils/parserHexa");
 const parserFechas = require("../utils/fechas");
-const {GeoDecimalesLatitud, GeoDecimalesLongitud} = require("../utils/geoDecimal");
+const ConvertGeoNMEADecimales = require("../utils/geoDecimal");
 class CF0F1F2 extends cCabezeraTrama
 {
     constructor(trama)
@@ -33,18 +33,14 @@ class CF0F1F2 extends cCabezeraTrama
         var lng = (decimaltoHexa(data[19].toString(16))+decimaltoHexa(data[18].toString(16))
             +decimaltoHexa(data[17].toString(16))+decimaltoHexa(data[16].toString(16)))
 
-        /******/
-        console.log("LAT : "+lat)
-        console.log("LNG : "+lng)
-        /******/
         this.setTamanioTrama  = decimaltoHexa(data[1].toString(16))
         this.setSerieEquipo = data[2].toString(16)+data[3].toString(16)+data[4].toString(16)
         this.setVelocidad = (parseInt(data[5].toString(16),16))
         this.setOrientacion = (parseInt(data[6].toString(16),16) * 2)
         this.setSatelites = (parseInt(data[7].toString(16),16))
         this.setFecha = (parserFechas(parseInt(fecha,16)))
-        this.setLatitud = (GeoDecimalesLatitud(HexToSignedInt(lat)))
-        this.setLongitud = (GeoDecimalesLongitud(HexToSignedInt(lng)))
+        this.setLatitud = (ConvertGeoNMEADecimales(HexToSignedInt(lat)))
+        this.setLongitud = (ConvertGeoNMEADecimales(HexToSignedInt(lng)))
         var binario = parseInt(decimaltoHexa(data[20].toString(16)), 16).toString(2).padStart(8, '0')
         this.setBandera = (binario)
     }

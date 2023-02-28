@@ -1,7 +1,7 @@
-const { Buffer } = require('node:buffer')
 const cSocketCliente = require("./pdo/cSocketCliente")
 const express = require("express")
 const cors = require('cors');
+
 // 1*60*60*1000
 //const TIMEOUT_1HORA = (1*60*60*1000)
 /**CONFIGURACION DE CORS**/
@@ -15,6 +15,7 @@ const app = express()
 
 
 const net = require('net');
+const {HexToSignedInt} = require("./utils/parserHexa");
 const server = net.createServer()
 let mListaSocketClientes = []
 

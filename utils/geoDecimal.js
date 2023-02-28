@@ -1,53 +1,40 @@
-function GeoDecimalesLatitud(punto)
+function ConvertGeoNMEADecimales(punto)
 {
-    var stringPunto = punto
+    console.log("PUNTO : "+punto)
+    var puntoPartes = []
+    var puntoParteUno = ""
+    var isNegativo = parseFloat(punto) < 0 ? -1 : 1
+    var dd = ""
+    var mm = ""
+    var mmmm = ""
 
 
-    var mListPuntoFinal = stringPunto.split('.')
-    var stringPuntoFinal = mListPuntoFinal[1]
-    var d = parseFloat(punto) <  0 ? -1 : 1
-    var dd = stringPunto[1]+stringPunto[2]
+    puntoPartes = punto.split('.')
+    puntoParteUno = parseInt(puntoPartes[0]) >  0 ? puntoPartes[0] : (-1*puntoPartes[0]).toString()
+    mmmm = "."+puntoPartes[1]
 
-    var mm = stringPunto[3]+stringPunto[4]
-    var mmmm = "."+stringPuntoFinal
-    //console.log(mm+mmmm)
+    for (var i = puntoParteUno.length;i>=0;i--)
+    {
+        if(puntoParteUno[i] != undefined)
+        {
+            if(mm.length<2){
+                mm = puntoParteUno[i]+mm
+            }else {
+                dd = puntoParteUno[i]+dd
+            }
+        }
+    }
 
+    console.log("DD : "+dd)
+    console.log("MM : "+mm)
+    console.log("MMMM : "+mmmm)
 
-    var parte1 = parseFloat(mm+mmmm)/60
-    //console.log("PARSE FLOAT : "+parte1)
-    var parte2 = parseFloat(dd) + parte1
-    //console.log("PARTE 2 : "+parte2)
-    var parte3 = parseFloat(d) * parte2
+    console.log("MM.MMMM /60 : " + parseFloat(mm+mmmm)/60)
 
-    //(𝑑) ∗ [𝑑𝑑 + (𝑚𝑚. 𝑚𝑚𝑚𝑚/60)]
-    return parte3.toFixed(6)
-
+    var coordenada = isNegativo * (parseInt(dd) + (parseFloat(mm+mmmm)/60))
+    console.log("COORDENADA : "+parseFloat(coordenada).toFixed(6))
+    return (parseFloat(coordenada).toFixed(6))
 }
 
 
-function GeoDecimalesLongitud(punto)
-{
-    var stringPunto = punto
-
-
-    var mListPuntoFinal = stringPunto.split('.')
-    var stringPuntoFinal = mListPuntoFinal[1]
-    var d = -1
-    var dd = stringPunto[1]+stringPunto[2]+stringPunto[3]
-
-    var mm = stringPunto[4]+stringPunto[5]
-    var mmmm = "."+stringPuntoFinal
-    //console.log(mm+mmmm)
-
-
-    var parte1 = parseFloat(mm+mmmm)/60
-    //console.log("PARSE FLOAT : "+parte1)
-    var parte2 = parseFloat(dd) + parte1
-    //console.log("PARTE 2 : "+parte2)
-    var parte3 = parseFloat(d) * parte2
-
-
-    return parte3.toFixed(7)
-}
-
-module.exports = {GeoDecimalesLatitud,GeoDecimalesLongitud}
+module.exports = ConvertGeoNMEADecimales

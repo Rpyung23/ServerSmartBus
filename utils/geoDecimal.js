@@ -5,7 +5,7 @@ function GeoDecimalesLatitud(punto)
 
     var mListPuntoFinal = stringPunto.split('.')
     var stringPuntoFinal = mListPuntoFinal[1]
-    var d = -1
+    var d = parseFloat(punto) <  0 ? -1 : 1
     var dd = stringPunto[1]+stringPunto[2]
 
     var mm = stringPunto[3]+stringPunto[4]

@@ -34,7 +34,7 @@ server.on('connection', (socketClient)=>
 
     //var oS = new cSocketCliente(socket,null)
     /*mListaSocketClientes.push(socket)*/
-
+    socketClient.setEncoding('ascii')
     socketClient.on('data', (data)=>
     {
         console.log("SOCKET : "+socketClient.remoteAddress+" DATA : ")
@@ -42,8 +42,8 @@ server.on('connection', (socketClient)=>
         console.log("--------------------------------------------------------------------------")
         //socketClient.end()
         var oS = new cSocketCliente(socketClient,null)
-        oS.insertarTrama(data)
-        oS.imprimirTramaDecodificada()
+       // oS.insertarTrama(data)
+        //oS.imprimirTramaDecodificada()
 
 
     })

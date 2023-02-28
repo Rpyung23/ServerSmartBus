@@ -15,7 +15,7 @@ class CSocketCliente
         /**  INSERTANDO TRAMA SOCKET  **/
 
         try{
-            var serie = trama[2].toString(16)+trama[3].toString(16)+trama[4].toString(16);
+            var serie = trama[4]+trama[5]+trama[6]+trama[7]+trama[8]+trama[9];
             /*var tramaString = ""
             for (var i = 0;i<trama.length;i++)
             {

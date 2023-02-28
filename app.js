@@ -34,7 +34,7 @@ server.on('connection', (socketClient)=>
 
     //var oS = new cSocketCliente(socket,null)
     /*mListaSocketClientes.push(socket)*/
-    socketClient.setEncoding('hex')
+    //socketClient.setEncoding('hex')
     socketClient.on('data', (data)=>
     {
         console.log("SOCKET : "+socketClient.remoteAddress+" DATA : ")

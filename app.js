@@ -35,7 +35,7 @@ server.on('connection', (socketClient)=>
 
 
     //var oS = new cSocketCliente(socket,null)
-    /*mListaSocketClientes.push(socket)*/
+    mListaSocketClientes.push(socketClient)
     //socketClient.setEncoding('hex')
     socketClient.on('data', (data)=>
     {

@@ -42,12 +42,12 @@ server.on('connection', (socketClient)=>
         console.log("SOCKET : "+socketClient.remoteAddress+" DATA : ")
         console.log(data)
 
-        console.log("--------------------------------------------------------------------------")
+        //console.log("--------------------------------------------------------------------------")
         //socketClient.end()
         var oS = new cSocketCliente(socketClient,null)
 
         oS.insertarTrama(data)
-        oS.imprimirTramaDecodificada()
+        //oS.imprimirTramaDecodificada()
 
 
     })

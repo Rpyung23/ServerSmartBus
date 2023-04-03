@@ -13,7 +13,7 @@ server.on('connection', (socketClient)=>
 
     socketClient.on('data', (data)=>
     {
-        console.log(data)
+        console.log(data.toString())
     })
 
     socketClient.on('close', ()=>{

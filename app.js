@@ -22,7 +22,7 @@ server.on('connection', (socketClient)=>
             console.log(data.toString())
             if(mListaSocketClientes.length > 0)
             {
-                mListaSocketClientes[mListaSocketClientes.length-1].send(data.toString())
+                mListaSocketClientes[mListaSocketClientes.length-1].write(data.toString())
             }
         }
     })

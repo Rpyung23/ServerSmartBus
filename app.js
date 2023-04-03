@@ -13,6 +13,7 @@ server.on('connection', (socketClient)=>
     {
         //data.isEncoding('hex')
         console.log(Buffer.isBuffer(data))
+        console.log(data.attributes)
         /*if(data.encoding() == 'hex'){
             console.log(data)
             console.log("----------------------------------------------")

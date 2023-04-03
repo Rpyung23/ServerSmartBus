@@ -8,16 +8,12 @@ server.on('connection', (socketClient)=>
 {
     console.log('NUEVO CLIENTE CONECTADO '+socketClient.remoteAddress)
     mListaSocketClientes.push(socketClient)
-    //socketClient.setEncoding('hex')
+
+    socketClient.setEncoding('ascii')
+
     socketClient.on('data', (data)=>
     {
-        //data.isEncoding('hex')
-        console.log(Buffer.isBuffer(data))
-        console.log(data.attributes)
-        /*if(data.encoding() == 'hex'){
-            console.log(data)
-            console.log("----------------------------------------------")
-        }/*/
+        console.log(data)
     })
 
     socketClient.on('close', ()=>{

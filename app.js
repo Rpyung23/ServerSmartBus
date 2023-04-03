@@ -9,7 +9,7 @@ server.on('connection', (socketClient)=>
     console.log('NUEVO CLIENTE CONECTADO '+socketClient.remoteAddress)
     mListaSocketClientes.push(socketClient)
 
-    socketClient.setEncoding('ascii')
+   //socketClient.setEncoding('ascii')
 
     socketClient.on('data', (data)=>
     {

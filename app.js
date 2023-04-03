@@ -1,55 +1,21 @@
-const cSocketCliente = require("./pdo/cSocketCliente")
-const express = require("express")
-const cors = require('cors');
-const cron = require('node-cron');
-
 // 1*60*60*1000
 //const TIMEOUT_1HORA = (1*60*60*1000)
-/**CONFIGURACION DE CORS**/
-var cors_config = {
-    "origin": "*",
-    "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
-    "preflightContinue": false,
-    "optionsSuccessStatus": 204
-}
-const app = express()
-
-
 const net = require('net');
-const {HexToSignedInt} = require("./utils/parserHexa");
 const server = net.createServer()
 let mListaSocketClientes = []
-
-let banderaSendEnvio = true;
-
-
-app.use(cors(cors_config));
-app.use(express.json({limit: '80mb'}));
-app.use(express.urlencoded({ extended: false,limit:'80mb' }));
 
 server.on('connection', (socketClient)=>
 {
     console.log('NUEVO CLIENTE CONECTADO '+socketClient.remoteAddress)
-    //socketClient.setTimeout(TIMEOUT_1HORA)
-
-
-
-    //var oS = new cSocketCliente(socket,null)
     mListaSocketClientes.push(socketClient)
     //socketClient.setEncoding('hex')
     socketClient.on('data', (data)=>
     {
-        console.log("SOCKET : "+socketClient.remoteAddress+" DATA : ")
-        console.log(data)
-
-        //console.log("--------------------------------------------------------------------------")
-        //socketClient.end()
-        var oS = new cSocketCliente(socketClient,null)
-
-        oS.insertarTrama(data)
-        //oS.imprimirTramaDecodificada()
-
-
+        console.log(data.encoding())
+        /*if(data.encoding() == 'hex'){
+            console.log(data)
+            console.log("----------------------------------------------")
+        }/*/
     })
 
     socketClient.on('close', ()=>{
@@ -80,50 +46,9 @@ server.on('error',(error)=>{
     console.log("**********************************************************************")
 })
 
-app.post("/sendComando",function (req,res)
-{
-    console.log("COMANDO RECIVO : "+req.body.comando)
-    try {
-        if(mListaSocketClientes.length > 0)
-        {
-            console.log("TAMANIO LISTA SOCKETS : "+mListaSocketClientes.length)
-            try{
-                console.log("REMOTEADDRESS : "+mListaSocketClientes[mListaSocketClientes.length-1].remoteAddress);
-                console.log("ADDRESS : ",mListaSocketClientes[mListaSocketClientes.length-1].address())
-                mListaSocketClientes[mListaSocketClientes.length-1].write(req.body.comando)
-                res.status(200).json({
-                    msm:"comando enviado"
-                })
-
-            }catch (e) {
-                console.log("TRY CATCH SOCKET.WRITE")
-                console.log(e)
-            }
-        }else{
-            res.status(200).json({
-                msm:"SOCKETS VACIOS"
-            })
-        }
-    }catch (e) {
-
-        res.status(200).json({
-            msm: e.toString()
-        })
-    }
-})
 
 server.listen(7890, ()=>
 {
     console.log('SOCKET SERVER LISTEN', server.address().port)
 })
 
-app.listen(3001,()=>{
-    console.log("REST ONLINE.....")
-    console.log('Escuchando por el puerto : '+3001)
-})
-
-
-
-cron.schedule('* * * * *', () => {
-    console.log('running a CRON...');
-});

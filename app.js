@@ -13,7 +13,7 @@ server.on('connection', (socketClient)=>
 
     socketClient.on('data', (data)=>
     {
-        console.log(data.toString())
+        console.log(data.toString().includes('\ufffd'))
     })
 
     socketClient.on('close', ()=>{

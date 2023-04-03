@@ -20,6 +20,10 @@ server.on('connection', (socketClient)=>
         }else{
             /**DATOS RECIBOS NETWORK**/
             console.log(data.toString())
+            if(mListaSocketClientes.length > 0)
+            {
+                mListaSocketClientes[mListaSocketClientes.length-1].send(data.toString())
+            }
         }
     })
 

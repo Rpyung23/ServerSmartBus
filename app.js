@@ -13,7 +13,14 @@ server.on('connection', (socketClient)=>
 
     socketClient.on('data', (data)=>
     {
-        console.log(data.toString().includes('\ufffd'))
+        if(data.toString().includes('\ufffd'))
+        {
+            /**DATOS RECIBOS DESDE GPS**/
+            console.log(data)
+        }else{
+            /**DATOS RECIBOS NETWORK**/
+            console.log(data.toString())
+        }
     })
 
     socketClient.on('close', ()=>{

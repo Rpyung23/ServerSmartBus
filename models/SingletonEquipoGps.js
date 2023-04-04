@@ -16,32 +16,38 @@ class SingletonEquipoGps {
             equipoExistente.socketEquipo = socketEquipo;
             equipoExistente.tramaEquipo = tramaEquipo;
 
-            if(convertBufferToHex(tramaEquipo[0]).toLowerCase() == 'f0'){
-                equipoExistente.isF0 = true
-            }else{
-                equipoExistente.isF0 = false
-            }
+            console.log(convertBufferToHex(tramaEquipo[0]).toLowerCase())
 
-            if (convertBufferToHex(tramaEquipo[0]).toLowerCase() == 'b2')
+            if(convertBufferToHex(tramaEquipo[0]).toLowerCase() != 'f0' &&
+                convertBufferToHex(tramaEquipo[0]).toLowerCase() != 'b2')
             {
-                equipoExistente.isB2 = true
-            }else{
+                equipoExistente.isF0 = false
                 equipoExistente.isB2 = false
+            }else{
+
+                if(convertBufferToHex(tramaEquipo[0]).toLowerCase() == 'f0')
+                {
+                    equipoExistente.isF0 = true
+                }
+                if (convertBufferToHex(tramaEquipo[0]).toLowerCase() == 'b2')
+                {
+                    equipoExistente.isB2 = true
+                }
             }
 
         } else {
             // Agregar un nuevo equipo a la lista.
             const nuevoEquipo = new EquipoGps(serieEquipo, socketEquipo, tramaEquipo);
             if(convertBufferToHex(tramaEquipo[0]).toLowerCase() == 'f0'){
-                equipoExistente.isF0 = true
+                nuevoEquipo.isF0 = true
             }else{
-                equipoExistente.isF0 = false
+                nuevoEquipo.isF0 = false
             }
             if (convertBufferToHex(tramaEquipo[0]).toLowerCase() == 'b2')
             {
-                equipoExistente.isB2 = true
+                nuevoEquipo.isB2 = true
             }else{
-                equipoExistente.isB2 = false
+                nuevoEquipo.isB2 = false
             }
             this.equipos.push(nuevoEquipo);
         }

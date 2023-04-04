@@ -21,6 +21,10 @@ server.on('connection', (socketClient)=>
             try{
                 var serie = convertBufferToHex(data[2])+convertBufferToHex(data[3])+convertBufferToHex(data[4])
                 oSingletonEquipoGps.agregarEquipo(serie,socketClient,data)
+                let equipo = oSingletonEquipoGps.obtenerEquipoPorSerie(serie)
+                if (equipo.isF0 && equipo.isB2){
+                    console.log("EQUIPO "+serie+" ENVIA COMANDO DE CONFIRMACION")
+                }
                 ControllerTramaSocket.registerControllerTramaSocket(serie,data)
             }catch (e) {
                 console.log(e)

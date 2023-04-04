@@ -1,4 +1,4 @@
-
+const {convertBufferToHex} = require("../utils/parserHexa")
 const EquipoGps = require("./EquipoGps")
 class SingletonEquipoGps {
     constructor() {
@@ -15,11 +15,38 @@ class SingletonEquipoGps {
             // Actualizar los datos del equipo existente.
             equipoExistente.socketEquipo = socketEquipo;
             equipoExistente.tramaEquipo = tramaEquipo;
+
+            if(convertBufferToHex(tramaEquipo[0]).toLowerCase() == 'f0'){
+                equipoExistente.isF0 = true
+            }else{
+                equipoExistente.isF0 = false
+            }
+
+            if (convertBufferToHex(tramaEquipo[0]).toLowerCase() == 'b2')
+            {
+                equipoExistente.isB2 = true
+            }else{
+                equipoExistente.isB2 = false
+            }
+
         } else {
             // Agregar un nuevo equipo a la lista.
             const nuevoEquipo = new EquipoGps(serieEquipo, socketEquipo, tramaEquipo);
+            if(convertBufferToHex(tramaEquipo[0]).toLowerCase() == 'f0'){
+                equipoExistente.isF0 = true
+            }else{
+                equipoExistente.isF0 = false
+            }
+            if (convertBufferToHex(tramaEquipo[0]).toLowerCase() == 'b2')
+            {
+                equipoExistente.isB2 = true
+            }else{
+                equipoExistente.isB2 = false
+            }
             this.equipos.push(nuevoEquipo);
         }
+
+
     }
 
     obtenerEquipoPorSerie(serieEquipo) {

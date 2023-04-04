@@ -3,6 +3,25 @@ class EquipoGps {
         this._serieEquipo = serieEquipo;
         this._socketEquipo = socket;
         this._tramaEquipo = trama;
+        this._isF0 = false
+        this._isB2 = false
+    }
+
+
+    get isF0() {
+        return this._isF0;
+    }
+
+    set isF0(value) {
+        this._isF0 = value;
+    }
+
+    get isB2() {
+        return this._isB2;
+    }
+
+    set isB2(value) {
+        this._isB2 = value;
     }
 
     get serieEquipo() {

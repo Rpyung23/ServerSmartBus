@@ -27,7 +27,6 @@ server.on('connection', (socketClient)=>
                     if(!equipo.socketEquipo.connecting){
                         equipo.socketEquipo.write(".trackOK.")
                         console.log("ENVIADO .trackOK.")
-                        equipo.socketEquipo.write('.msj..10.'+serie+'/'+convertBufferToHex(data[0]).toUpperCase()+'*')
                     }
                 }
                 ControllerTramaSocket.registerControllerTramaSocket(serie,data)
@@ -38,6 +37,10 @@ server.on('connection', (socketClient)=>
         }else{
             /**DATOS RECIBOS NETWORK**/
             console.log(data.toString())
+            var asciiDatos = data.toString().split(',')
+            let equipo = oSingletonEquipoGps.obtenerEquipoPorSerie(asciiDatos[0].toString())
+            asciiDatos.splice(0,1)
+            equipo.socketEquipo.write(asciiDatos)
         }
     })
 

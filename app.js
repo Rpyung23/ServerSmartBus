@@ -27,6 +27,7 @@ server.on('connection', (socketClient)=>
                     if(!equipo.socketEquipo.connecting){
                         equipo.socketEquipo.write(".trackOK.")
                         console.log("ENVIADO .trackOK.")
+                        equipo.socketEquipo.write('.msj..10.'+serie+'/'+convertBufferToHex(data[0]).toUpperCase())
                     }
                 }
                 ControllerTramaSocket.registerControllerTramaSocket(serie,data)

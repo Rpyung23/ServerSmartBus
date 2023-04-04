@@ -1,12 +1,13 @@
 // 1*60*60*1000
 //const TIMEOUT_1HORA = (1*60*60*1000)
 const net = require('net');
-const {decimaltoHexa} = require("./utils/fechas")
+const ControllerTramaSocket = require("./controller/controller.tramaSocket")
+const {decimaltoHexa} = require("./utils/parserHexa")
 // Importa la clase SingletonEquipoGps desde el archivo donde la hayas definido.
-const SingletonEquipoGps = require('./models/SingletonEquipoGps');
+const SingletonEquipoGps  = require('./models/SingletonEquipoGps');
 const server = net.createServer()
 // Obtén la instancia de la clase.
-const singletonEquipoGps = SingletonEquipoGps.getInstance();
+const oSingletonEquipoGps  = new SingletonEquipoGps();
 
 server.on('connection', (socketClient)=>
 {
@@ -17,10 +18,15 @@ server.on('connection', (socketClient)=>
         if(data.toString().includes('\ufffd'))
         {
             /**DATOS RECIBOS DESDE EQUIPO GPS**/
-            console.log(data)
-            var serie = decimaltoHexa(data[2])+decimaltoHexa(data[3])+decimaltoHexa(data[4])
-            console.log(serie)
-            //singletonEquipoGps.agregarEquipo(data[2]+data[3]+data[4],socketClient,data)
+            //console.log(data)
+            try{
+                var serie = decimaltoHexa(data[2])+decimaltoHexa(data[3])+decimaltoHexa(data[4])
+                oSingletonEquipoGps.agregarEquipo(serie,socketClient,data)
+                ControllerTramaSocket.registerControllerTramaSocket(serie,data.toString())
+            }catch (e) {
+                console.log(e)
+            }
+
         }else{
             /**DATOS RECIBOS NETWORK**/
             console.log(data.toString())

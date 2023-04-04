@@ -49,3 +49,5 @@ class SingletonEquipoGps {
         equipo.tramaEquipo = nuevaTrama;
     }
 }
+
+module.exports = SingletonEquipoGps

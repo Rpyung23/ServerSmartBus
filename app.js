@@ -40,6 +40,7 @@ server.on('connection', (socketClient)=>
             var asciiDatos = data.toString().split(',')
             let equipo = oSingletonEquipoGps.obtenerEquipoPorSerie(asciiDatos[0].toString())
             asciiDatos.splice(0,1)
+            console.log("ENVIANDO : "+asciiDatos.toString())
             equipo.socketEquipo.write(asciiDatos.toString())
         }
     })

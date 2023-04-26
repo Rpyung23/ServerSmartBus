@@ -41,7 +41,11 @@ server.on('connection', (socketClient)=>
             let equipo = oSingletonEquipoGps.obtenerEquipoPorSerie(asciiDatos[0].toString())
             asciiDatos.splice(0,1)
             console.log("ENVIANDO : "+asciiDatos.toString())
-            equipo.socketEquipo.write(asciiDatos.toString())
+            if(equipo != undefined){
+                equipo.socketEquipo.write(asciiDatos.toString())
+            }else{
+                console.log("EQUIPO NO ENCONTRADO")
+            }
         }
     })
 

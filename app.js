@@ -15,7 +15,10 @@ server.on('connection', (socketClient)=>
         try{
             var serie = convertBufferToHex(data[2])+convertBufferToHex(data[3])+convertBufferToHex(data[4])
             console.log(`SERIE ${serie}`)
-            //socketClient.write('.trackOK.')
+            if(convertBufferToHex(data[0]) == 'b2'){
+                console.log(`SERIE ${serie} SEND COMMAND .trackOK.`)
+                socketClient.write('.trackOK.')
+            }
         }catch (e) {
             console.log(e)
         }

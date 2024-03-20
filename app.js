@@ -1,5 +1,6 @@
 // 1*60*60*1000
 //const TIMEOUT_1HORA = (1*60*60*1000)
+require("./env/port")
 const {convertBufferToHex} = require("./utils/parserHexa")
 const net = require('net');
 const server = net.createServer()
@@ -14,6 +15,7 @@ server.on('connection', (socketClient)=>
         try{
             var serie = convertBufferToHex(data[2])+convertBufferToHex(data[3])+convertBufferToHex(data[4])
             console.log(`SERIE ${serie}`)
+            socketClient.write('.trackOK.')
         }catch (e) {
             console.log(e)
         }
@@ -65,8 +67,8 @@ server.on('error',(error)=>{
 })
 
 
-server.listen(7890, ()=>
+server.listen(process.env.PORT, ()=>
 {
-    console.log('SOCKET SERVER LISTEN', server.address().port)
+    console.log(`SOCKET SERVER LISTEN ${process.env.PORT}`)
 })
 
